@@ -8,7 +8,7 @@ that implements "tryBlockAndAggregate" function.
 Main urge for developmenet such a package was when I was needed to use multicall in my project
 based on Web3.py, but found only libraries which work with Brownie, not on pure Web3.py.
 
-    pip install simple-multicall
+    pip install simple-multicall-2
 
 ## Package Content
 
@@ -40,11 +40,6 @@ Can be one of the followings
 - 'rinkeby'
 - 'goerli'
 - 'ropsten'
-- 'xdai'
-- 'polygon'
-- 'mumbai'
-- 'bsc-mainnet'
-- 'bsc-testnet'
 
 _custom_address_: str - An address of custom multicall smart contract.
 If specified, MakerDao Multicall smart contract will be omited.
