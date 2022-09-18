@@ -5,7 +5,7 @@ DESCRIPTION
     A multicall for use with pure Web3 lbrary.
     It uses MakerDao Multicall smart contract by default,
     but also can use any custom multicall smart contract 
-    that implements "aggregate" function
+    that implements "tryBlockAndAggregate" function
 
 """
 
@@ -38,11 +38,6 @@ class Multicall:
             - 'rinkeby'
             - 'goerli'
             - 'ropsten'
-            - 'xdai'
-            - 'polygon'
-            - 'mumbai'
-            - 'bsc-mainnet'
-            - 'bsc-testnet'
 
         custom_address: str
             An address of custom multicall smart contract. 
@@ -83,12 +78,16 @@ class Multicall:
 
     def call(
         self,
+        require_success: bool,
         calls: list
     ) -> list:
         """
         Executes multicall for specified list of smart contracts functions.
 
         Parameters:
+            require_success: bool
+                if true, all calls must return true, otherwise the multicall fails.
+
             calls: list(tuple)
                 list of tuples (target contract address, encoded function name with parameters)
                 Can be easy prepared via using Multicall.create_cal' method.
@@ -97,7 +96,7 @@ class Multicall:
             tuple(block number, list(results)) for default MakerDao multicall. May vary for custom multicalls.
         """
         
-        return self.multicall.functions.aggregate(calls).call()
+        return self.multicall.functions.tryBlockAndAggregate(require_success, calls).call()
 
 
     def create_call(

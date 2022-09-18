@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from pathlib import Path
 
-VERSION = '0.1.5' 
+VERSION = '0.1.0' 
 DESCRIPTION = 'Simple Web3 multicall'
 
 this_directory = Path(__file__).parent
@@ -13,8 +13,8 @@ setup(
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
-    author='Igor Lapshin',
-    author_email= 'igorlapshin@list.ru',
+    author='',
+    author_email= '',
     packages=find_packages(),
     license='MIT',
     keywords=['multicall', 'web3'],
